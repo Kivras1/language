@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK 3/4 Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <div class="logo">汉</div>
+          <div class="titles">
+            <h1>HSK Study</h1>
+            <p class="subtitle">Practice HSK 3 and 4 vocabulary</p>
+          </div>
+        </div>
+        <div class="controls">
+          <div class="level-toggle" role="group" aria-label="Level toggle">
+            <button class="level-btn active" data-level="hsk3">HSK 3</button>
+            <button class="level-btn" data-level="hsk4">HSK 4</button>
+          </div>
+          <button id="resetProgressBtn" class="ghost">Reset progress</button>
+        </div>
+      </header>
+
+      <section class="progress-section">
+        <div class="progress-summary">
+          <div>
+            <span id="knownCount">0</span>/<span id="totalCount">0</span> known
+          </div>
+          <div id="percentComplete" class="percent">0%</div>
+        </div>
+        <div class="progress-bar">
+          <div id="progressFill" class="fill" style="width:0%"></div>
+        </div>
+      </section>
+
+      <nav class="mode-tabs" role="tablist">
+        <button class="mode-tab active" data-mode="flashcards" role="tab" aria-selected="true">Flashcards</button>
+        <button class="mode-tab" data-mode="quiz" role="tab" aria-selected="false">Multiple Choice</button>
+        <button class="mode-tab" data-mode="typing" role="tab" aria-selected="false">Type Pinyin</button>
+      </nav>
+
+      <main class="content">
+        <section id="flashcardsMode" class="mode active" aria-labelledby="Flashcards">
+          <div class="card">
+            <div class="card-top">
+              <div id="cardHanzi" class="hanzi">—</div>
+              <div id="cardPinyin" class="pinyin">—</div>
+              <div id="cardMeaning" class="meaning">—</div>
+            </div>
+            <div class="card-actions">
+              <button id="prevBtn" class="secondary" title="Previous">⟵</button>
+              <div class="spacer"></div>
+              <button id="shuffleBtn" class="ghost" title="Shuffle">Shuffle</button>
+              <button id="markKnownBtn" class="primary">Mark known ✓</button>
+              <button id="nextBtn" class="secondary" title="Next">⟶</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="quizMode" class="mode" aria-labelledby="Multiple Choice">
+          <div class="quiz">
+            <div class="prompt">
+              <div class="prompt-label">Select the correct Hanzi for:</div>
+              <div id="quizPrompt" class="prompt-text">—</div>
+            </div>
+            <div id="quizOptions" class="options"></div>
+            <div id="quizFeedback" class="feedback"></div>
+            <div class="quiz-actions">
+              <button id="nextQuizBtn" class="primary">Next</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="typingMode" class="mode" aria-labelledby="Type Pinyin">
+          <div class="typing">
+            <div class="prompt">
+              <div class="prompt-label">Type the pinyin (tone marks or numbers) for:</div>
+              <div id="typingHanzi" class="prompt-hanzi">—</div>
+            </div>
+            <div class="typing-input">
+              <input id="typingInput" type="text" placeholder="e.g., shì jiè or shi4 jie4" autocomplete="off" />
+              <button id="checkTypingBtn" class="primary">Check</button>
+            </div>
+            <div id="typingFeedback" class="feedback"></div>
+            <div class="typing-actions">
+              <button id="nextTypingBtn" class="secondary">Next</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <div>Made for focused, beautiful Chinese study.</div>
+      </footer>
+    </div>
+
+    <script src="scripts/app.js" type="module"></script>
+  </body>
+</html>
